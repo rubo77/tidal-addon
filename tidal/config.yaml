@@ -1,0 +1,34 @@
+name: "Tidal (Mopidy)"
+version: "0.1.0"
+slug: tidal
+description: "Play Tidal music on this host's sound card — Mopidy with the Iris web UI"
+url: "https://github.com/rubo77/tidal-addon"
+arch:
+  - amd64
+  - aarch64
+  - armv7
+  - armhf
+  - i386
+build: true
+image: "ha-apps-local/tidal"
+webui: "http://[HOST]:[PORT:6680]/"
+ports:
+  6680/tcp: 6680
+  6600/tcp: 6600
+  8989/tcp: 8989
+ports_description:
+  6680/tcp: "Iris web UI"
+  6600/tcp: "MPD control port"
+  8989/tcp: "Tidal PKCE login callback"
+devices:
+  - "/dev/snd:/dev/snd:rw"
+environment:
+  PULSE_COOKIE: /data/pulse_cookie
+options:
+  audio_device: "default"
+  quality: "LOSSLESS"
+schema:
+  audio_device: "str"
+  quality: "list(LOSSLESS|HIGH|LOW)?"
+startup: services
+boot: auto
