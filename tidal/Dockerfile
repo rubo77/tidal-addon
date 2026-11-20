@@ -21,5 +21,8 @@ RUN pip3 install --break-system-packages --no-cache-dir \
         --timeout 120 --retries 8 \
         "mopidy<4" mopidy-tidal mopidy-iris mopidy-mpd "setuptools<81"
 
+COPY patch_login_hack.py /patch_login_hack.py
+RUN python3 /patch_login_hack.py
+
 COPY run.sh /run.sh
 ENTRYPOINT ["bash", "/run.sh"]

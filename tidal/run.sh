@@ -49,5 +49,5 @@ login_method = AUTO
 CONF
 
 echo "[tidal] starting mopidy (audio=$AUDIO_DEV, quality=$QUALITY)"
-echo "[tidal] first login: watch for a link.tidal.com URL below"
+echo "[tidal] first login: Iris - Tidal - 3-dot menu - Copy URLs, paste in browser"
 exec mopidy --config "$DATA/mopidy.conf"
